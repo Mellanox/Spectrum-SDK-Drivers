@@ -1,0 +1,2852 @@
+/*
+ * SPDX-FileCopyrightText: Copyright (c) 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+ * SPDX-License-Identifier: LicenseRef-NvidiaProprietary
+ *
+ * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
+ * property and proprietary rights in and to this material, related
+ * documentation and any modifications thereto. Any use, reproduction,
+ * disclosure or distribution of this material and related documentation
+ * without an express license agreement from NVIDIA CORPORATION or
+ * its affiliates is strictly prohibited.
+ */
+
+
+/*
+ * THIS FILE IS AUTO GENERATED.
+ * DO NOT MAKE ANY CHANGES!
+ * They will be erased with next update.
+ *
+ */
+
+#include <linux/mlx_sx/driver.h>
+#include <linux/mlx_sx/kernel_user.h>
+#include <linux/mlx_sx/auto_registers/reg.h>
+#include <linux/mlx_sx/auto_registers/cmd_auto.h>
+#include <linux/mlx_sx/auto_registers/sx_core_reg_buffer_print_auto.h>
+
+/************************************************
+ *  Define
+ ***********************************************/
+#define GET_BIT_IN_MASK(mask, offset) (((mask) & (1 << (offset))) >> (offset))
+
+/************************************************
+ *  Local variables
+ ***********************************************/
+
+/************************************************
+ *  Type definitions
+ ***********************************************/
+
+
+/************************************************
+ *  Local function declarations
+ ***********************************************/
+
+
+/************************************************
+ * Functions                                    *
+ ***********************************************/
+
+/* reg data to buffer print */
+int sx_kernel_access_reg_pddr_data_to_buffer_print(char buffer[], size_t buffer_length, struct ku_pddr_reg *reg_data)
+{
+    int buffer_size = 0, snp_res = 0;
+    uint32_t i = 0;
+    uint32_t j = 0;
+    uint16_t local_port = 0;
+
+	uint64_t	date_code = 0;
+	const char* c = NULL;
+	char		str_buf[256];
+
+    SX_PORT_BUILD_PHY_ID_FROM_LSB_MSB(local_port, reg_data->local_port, reg_data->lp_msb);
+    snp_res = snprintf(buffer, buffer_length - buffer_size, "local_port: 0x%x\n", local_port);
+    VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+    buffer += snp_res;
+    buffer_size += snp_res;
+    switch (reg_data->page_select) {
+    case SXD_PDDR_PAGE_SELECT_OPERATIONAL_INFO_PAGE_E:
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "proto_active: 0x%x\n", reg_data->page_data.pddr_operation_info_page.proto_active);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "neg_mode_active: 0x%x\n", reg_data->page_data.pddr_operation_info_page.neg_mode_active);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "pd_fsm_state: 0x%x\n", reg_data->page_data.pddr_operation_info_page.pd_fsm_state);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "phy_mngr_fsm_state: 0x%x\n", reg_data->page_data.pddr_operation_info_page.phy_mngr_fsm_state);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "eth_an_fsm_state: 0x%x\n", reg_data->page_data.pddr_operation_info_page.eth_an_fsm_state);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "ib_phy_fsm_state: 0x%x\n", reg_data->page_data.pddr_operation_info_page.ib_phy_fsm_state);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "phy_hst_fsm_state: 0x%x\n", reg_data->page_data.pddr_operation_info_page.phy_hst_fsm_state);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        switch (reg_data->page_data.pddr_operation_info_page.proto_active) {
+        case SXD_PDDR_PROTO_ACTIVE_INFINIBAND_E:
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "phy_manager_link_width_enabled: 0x%x\n", reg_data->page_data.pddr_operation_info_page.phy_manager_link_enabled.pddr_phy_manager_link_enabled_ib.phy_manager_link_width_enabled);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "phy_manager_link_proto_enabled: 0x%x\n", reg_data->page_data.pddr_operation_info_page.phy_manager_link_enabled.pddr_phy_manager_link_enabled_ib.phy_manager_link_proto_enabled);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            break;
+
+        case SXD_PDDR_PROTO_ACTIVE_ETHERNET_E:
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "phy_manager_link_eth_enabled: 0x%x\n", reg_data->page_data.pddr_operation_info_page.phy_manager_link_enabled.pddr_phy_manager_link_enabled_eth.phy_manager_link_eth_enabled);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            break;
+
+        case SXD_PDDR_PROTO_ACTIVE_NVLINK_E:
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "phy_manager_link_nvlink_enabled: 0x%x\n", reg_data->page_data.pddr_operation_info_page.phy_manager_link_enabled.pddr_phy_manager_link_enabled_nvlink.phy_manager_link_nvlink_enabled);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            break;
+
+        default:
+            /* Other types not supported yet */
+            break;
+        }
+        switch (reg_data->page_data.pddr_operation_info_page.proto_active) {
+        case SXD_PDDR_PROTO_ACTIVE_INFINIBAND_E:
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "core_to_phy_link_width_enabled: 0x%x\n", reg_data->page_data.pddr_operation_info_page.core_to_phy_link_enabled.pddr_c2p_link_enabled_ib.core_to_phy_link_width_enabled);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "core_to_phy_link_proto_enabled: 0x%x\n", reg_data->page_data.pddr_operation_info_page.core_to_phy_link_enabled.pddr_c2p_link_enabled_ib.core_to_phy_link_proto_enabled);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            break;
+
+        case SXD_PDDR_PROTO_ACTIVE_ETHERNET_E:
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "core_to_phy_link_eth_enabled: 0x%x\n", reg_data->page_data.pddr_operation_info_page.core_to_phy_link_enabled.pddr_c2p_link_enabled_eth.core_to_phy_link_eth_enabled);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            break;
+
+        case SXD_PDDR_PROTO_ACTIVE_NVLINK_E:
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "core_to_phy_link_nvlink_enabled: 0x%x\n", reg_data->page_data.pddr_operation_info_page.core_to_phy_link_enabled.pddr_c2p_link_enabled_nvlink.core_to_phy_link_nvlink_enabled);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            break;
+
+        default:
+            /* Other types not supported yet */
+            break;
+        }
+        switch (reg_data->page_data.pddr_operation_info_page.proto_active) {
+        case SXD_PDDR_PROTO_ACTIVE_INFINIBAND_E:
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "cable_link_width_cap: 0x%x\n", reg_data->page_data.pddr_operation_info_page.cable_proto_cap.pddr_cable_cap_ib.cable_link_width_cap);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "cable_link_speed_cap: 0x%x\n", reg_data->page_data.pddr_operation_info_page.cable_proto_cap.pddr_cable_cap_ib.cable_link_speed_cap);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            break;
+
+        case SXD_PDDR_PROTO_ACTIVE_ETHERNET_E:
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "cable_ext_eth_proto_cap: 0x%x\n", reg_data->page_data.pddr_operation_info_page.cable_proto_cap.pddr_cable_cap_eth.cable_ext_eth_proto_cap);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            break;
+
+        case SXD_PDDR_PROTO_ACTIVE_NVLINK_E:
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "cable_nvlink_proto_cap: 0x%x\n", reg_data->page_data.pddr_operation_info_page.cable_proto_cap.pddr_cable_cap_nvlink.cable_nvlink_proto_cap);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            break;
+
+        default:
+            /* Other types not supported yet */
+            break;
+        }
+        switch (reg_data->page_data.pddr_operation_info_page.proto_active) {
+        case SXD_PDDR_PROTO_ACTIVE_INFINIBAND_E:
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "link_width_active: 0x%x\n", reg_data->page_data.pddr_operation_info_page.link_active.pddr_link_active_ib.link_width_active);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "link_speed_active: 0x%x\n", reg_data->page_data.pddr_operation_info_page.link_active.pddr_link_active_ib.link_speed_active);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            break;
+
+        case SXD_PDDR_PROTO_ACTIVE_ETHERNET_E:
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "link_eth_active: 0x%x\n", reg_data->page_data.pddr_operation_info_page.link_active.pddr_link_active_eth.link_eth_active);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            break;
+
+        case SXD_PDDR_PROTO_ACTIVE_NVLINK_E:
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "link_nvlink_active: 0x%x\n", reg_data->page_data.pddr_operation_info_page.link_active.pddr_link_active_nvlink.link_nvlink_active);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            break;
+
+        default:
+            /* Other types not supported yet */
+            break;
+        }
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "retran_mode_active: 0x%x\n", reg_data->page_data.pddr_operation_info_page.retran_mode_active);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "retran_mode_request: 0x%x\n", reg_data->page_data.pddr_operation_info_page.retran_mode_request);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "bidi_pri_or_sec: 0x%x\n", reg_data->page_data.pddr_operation_info_page.bidi_pri_or_sec);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "loopback_mode: 0x%x\n", reg_data->page_data.pddr_operation_info_page.loopback_mode);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "fec_mode_active: 0x%x\n", reg_data->page_data.pddr_operation_info_page.fec_mode_active);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "fec_mode_request: 0x%x\n", reg_data->page_data.pddr_operation_info_page.fec_mode_request);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "profile_fec_in_use: 0x%x\n", reg_data->page_data.pddr_operation_info_page.profile_fec_in_use);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "nlpn_fsm_state: 0x%x\n", reg_data->page_data.pddr_operation_info_page.nlpn_fsm_state);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "eth_25g_50g_fec_support: 0x%x\n", reg_data->page_data.pddr_operation_info_page.eth_25g_50g_fec_support);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "eth_100g_fec_support: 0x%x\n", reg_data->page_data.pddr_operation_info_page.eth_100g_fec_support);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        switch (reg_data->page_data.pddr_operation_info_page.proto_active) {
+        case SXD_PDDR_PROTO_ACTIVE_INFINIBAND_E:
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "link_width_active: 0x%x\n", reg_data->page_data.pddr_operation_info_page.pd_link_enabled.pd_link_ib_enabled.link_width_active);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "link_speed_active: 0x%x\n", reg_data->page_data.pddr_operation_info_page.pd_link_enabled.pd_link_ib_enabled.link_speed_active);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            break;
+
+        case SXD_PDDR_PROTO_ACTIVE_ETHERNET_E:
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "link_eth_active: 0x%x\n", reg_data->page_data.pddr_operation_info_page.pd_link_enabled.pd_link_eth_enabled.link_eth_active);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            break;
+
+        case SXD_PDDR_PROTO_ACTIVE_NVLINK_E:
+            break;
+
+        default:
+            /* Other types not supported yet */
+            break;
+        }
+        switch (reg_data->page_data.pddr_operation_info_page.proto_active) {
+        case SXD_PDDR_PROTO_ACTIVE_INFINIBAND_E:
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "link_width_active: 0x%x\n", reg_data->page_data.pddr_operation_info_page.phy_hst_link_enabled.hst_link_ib_enabled.link_width_active);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "link_speed_active: 0x%x\n", reg_data->page_data.pddr_operation_info_page.phy_hst_link_enabled.hst_link_ib_enabled.link_speed_active);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            break;
+
+        case SXD_PDDR_PROTO_ACTIVE_ETHERNET_E:
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "link_eth_active: 0x%x\n", reg_data->page_data.pddr_operation_info_page.phy_hst_link_enabled.hst_link_eth_enabled.link_eth_active);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            break;
+
+        case SXD_PDDR_PROTO_ACTIVE_NVLINK_E:
+            break;
+
+        default:
+            /* Other types not supported yet */
+            break;
+        }
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "eth_an_link_enabled: 0x%x\n", reg_data->page_data.pddr_operation_info_page.eth_an_link_enabled);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "linkup_retry_iterations: 0x%x\n", reg_data->page_data.pddr_operation_info_page.linkup_retry_iterations);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "core_to_phy_state: 0x%x\n", reg_data->page_data.pddr_operation_info_page.core_to_phy_state);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "psi_fsm_state: 0x%x\n", reg_data->page_data.pddr_operation_info_page.psi_fsm_state);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cable_proto_cap_ext: 0x%x\n", reg_data->page_data.pddr_operation_info_page.cable_proto_cap_ext);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "test_mode_fsm_state: 0x%x\n", reg_data->page_data.pddr_operation_info_page.test_mode_fsm_state);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        break;
+
+    case SXD_PDDR_PAGE_SELECT_TROUBLESHOOTING_INFO_PAGE_E:
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "group_opcode: 0x%x\n", reg_data->page_data.pddr_troubleshooting_page.group_opcode);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        switch (reg_data->page_data.pddr_troubleshooting_page.group_opcode) {
+        case SXD_PDDR_GROUP_OPCODE_MONITOR_OPCODES_E:
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "monitor_opcode: 0x%x\n", reg_data->page_data.pddr_troubleshooting_page.status_opcode.pddr_monitor_opcode.monitor_opcode);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            break;
+
+        case SXD_PDDR_GROUP_OPCODE_ADVANCED_DEBUG_OPCODES_E:
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "advanced_opcode: 0x%x\n", reg_data->page_data.pddr_troubleshooting_page.status_opcode.pddr_advanced_opcode.advanced_opcode);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            break;
+
+        default:
+            /* Other types not supported yet */
+            break;
+        }
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "user_feedback_data: 0x%x\n", reg_data->page_data.pddr_troubleshooting_page.user_feedback_data);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "user_feedback_index: 0x%x\n", reg_data->page_data.pddr_troubleshooting_page.user_feedback_index);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+		memset(str_buf, 0, sizeof(str_buf));
+		snprintf(str_buf,
+				 SXD_PDDR_PDDR_TROUBLESHOOTING_PAGE_STATUS_MESSAGE_NUM + 1,
+				 "%s",
+				 reg_data->page_data.pddr_troubleshooting_page.status_message);
+		snp_res = snprintf(buffer, buffer_length - buffer_size, "status_message: %s\n", str_buf);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+        break;
+
+    case SXD_PDDR_PAGE_SELECT_PHY_INFO_PAGE_E:
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "remote_device_type: 0x%x\n", reg_data->page_data.pddr_phy_info_page.remote_device_type);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "negotiation_mask: 0x%x\n", reg_data->page_data.pddr_phy_info_page.negotiation_mask);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "port_notifications: 0x%x\n", reg_data->page_data.pddr_phy_info_page.port_notifications);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "num_of_negotiation_attempts: 0x%x\n", reg_data->page_data.pddr_phy_info_page.num_of_negotiation_attempts);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "ib_revision: 0x%x\n", reg_data->page_data.pddr_phy_info_page.ib_revision);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "lp_ib_revision: 0x%x\n", reg_data->page_data.pddr_phy_info_page.lp_ib_revision);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "hw_link_phy_state: 0x%x\n", reg_data->page_data.pddr_phy_info_page.hw_link_phy_state);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "phy_manager_disable_mask: 0x%x\n", reg_data->page_data.pddr_phy_info_page.phy_manager_disable_mask);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "pcs_phy_state: 0x%x\n", reg_data->page_data.pddr_phy_info_page.pcs_phy_state);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "lp_proto_enabled: 0x%x\n", reg_data->page_data.pddr_phy_info_page.lp_proto_enabled);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "lp_fec_mode_support: 0x%x\n", reg_data->page_data.pddr_phy_info_page.lp_fec_mode_support);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "lp_fec_mode_request: 0x%x\n", reg_data->page_data.pddr_phy_info_page.lp_fec_mode_request);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "ib_last_link_down_reason: 0x%x\n", reg_data->page_data.pddr_phy_info_page.ib_last_link_down_reason);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "eth_last_link_down_lane: 0x%02x%02x%02x%02x\n", reg_data->page_data.pddr_phy_info_page.eth_last_link_down_lane[0], reg_data->page_data.pddr_phy_info_page.eth_last_link_down_lane[1], reg_data->page_data.pddr_phy_info_page.eth_last_link_down_lane[2], reg_data->page_data.pddr_phy_info_page.eth_last_link_down_lane[3]);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "speed_deg_db: 0x%x\n", reg_data->page_data.pddr_phy_info_page.speed_deg_db);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "degrade_grade_lane0: 0x%x\n", reg_data->page_data.pddr_phy_info_page.degrade_grade_lane0);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "degrade_grade_lane1: 0x%x\n", reg_data->page_data.pddr_phy_info_page.degrade_grade_lane1);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "degrade_grade_lane2: 0x%x\n", reg_data->page_data.pddr_phy_info_page.degrade_grade_lane2);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "degrade_grade_lane3: 0x%x\n", reg_data->page_data.pddr_phy_info_page.degrade_grade_lane3);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "num_of_presets_tested_lane4: 0x%x\n", reg_data->page_data.pddr_phy_info_page.num_of_presets_tested_lane4);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "num_of_presets_tested_lane5: 0x%x\n", reg_data->page_data.pddr_phy_info_page.num_of_presets_tested_lane5);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "num_of_presets_tested_lane6: 0x%x\n", reg_data->page_data.pddr_phy_info_page.num_of_presets_tested_lane6);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "num_of_presets_tested_lane7: 0x%x\n", reg_data->page_data.pddr_phy_info_page.num_of_presets_tested_lane7);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "kr_startup_debug_indications_4: 0x%x\n", reg_data->page_data.pddr_phy_info_page.kr_startup_debug_indications_4);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "kr_startup_debug_indications_5: 0x%x\n", reg_data->page_data.pddr_phy_info_page.kr_startup_debug_indications_5);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "kr_startup_debug_indications_6: 0x%x\n", reg_data->page_data.pddr_phy_info_page.kr_startup_debug_indications_6);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "kr_startup_debug_indications_7: 0x%x\n", reg_data->page_data.pddr_phy_info_page.kr_startup_debug_indications_7);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "num_of_presets_tested_lane0: 0x%x\n", reg_data->page_data.pddr_phy_info_page.num_of_presets_tested_lane0);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "num_of_presets_tested_lane1: 0x%x\n", reg_data->page_data.pddr_phy_info_page.num_of_presets_tested_lane1);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "num_of_presets_tested_lane2: 0x%x\n", reg_data->page_data.pddr_phy_info_page.num_of_presets_tested_lane2);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "num_of_presets_tested_lane3: 0x%x\n", reg_data->page_data.pddr_phy_info_page.num_of_presets_tested_lane3);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "kr_startup_fsm_lane: 0x%02x%02x%02x%02x%02x%02x%02x%02x\n", reg_data->page_data.pddr_phy_info_page.kr_startup_fsm_lane[0], reg_data->page_data.pddr_phy_info_page.kr_startup_fsm_lane[1], reg_data->page_data.pddr_phy_info_page.kr_startup_fsm_lane[2], reg_data->page_data.pddr_phy_info_page.kr_startup_fsm_lane[3], reg_data->page_data.pddr_phy_info_page.kr_startup_fsm_lane[4], reg_data->page_data.pddr_phy_info_page.kr_startup_fsm_lane[5], reg_data->page_data.pddr_phy_info_page.kr_startup_fsm_lane[6], reg_data->page_data.pddr_phy_info_page.kr_startup_fsm_lane[7]);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "eth_an_debug_indication: 0x%x\n", reg_data->page_data.pddr_phy_info_page.eth_an_debug_indication);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cdr_not_locked_cnt: 0x%x\n", reg_data->page_data.pddr_phy_info_page.cdr_not_locked_cnt);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "fall_from_cfg_idle_cnt: 0x%x\n", reg_data->page_data.pddr_phy_info_page.fall_from_cfg_idle_cnt);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "fall_from_cfg_idle_cdr_cnt: 0x%x\n", reg_data->page_data.pddr_phy_info_page.fall_from_cfg_idle_cdr_cnt);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "eth_an_watchdog_cnt: 0x%x\n", reg_data->page_data.pddr_phy_info_page.eth_an_watchdog_cnt);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "rounds_waited_for_peer_to_end_test: 0x%x\n", reg_data->page_data.pddr_phy_info_page.rounds_waited_for_peer_to_end_test);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "ib_phy_fsm_state_trace: 0x%x\n", reg_data->page_data.pddr_phy_info_page.ib_phy_fsm_state_trace);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "kr_startup_debug_indications_0: 0x%x\n", reg_data->page_data.pddr_phy_info_page.kr_startup_debug_indications_0);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "kr_startup_debug_indications_1: 0x%x\n", reg_data->page_data.pddr_phy_info_page.kr_startup_debug_indications_1);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "kr_startup_debug_indications_2: 0x%x\n", reg_data->page_data.pddr_phy_info_page.kr_startup_debug_indications_2);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "kr_startup_debug_indications_3: 0x%x\n", reg_data->page_data.pddr_phy_info_page.kr_startup_debug_indications_3);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        for (i = 0; i < SXD_PDDR_PDDR_PHY_INFO_PAGE_TX_TUNING_STAGES_LANE_NUM; i++) {
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "tx_tuning_stages_lane[%d]: 0x%x\n", i, reg_data->page_data.pddr_phy_info_page.tx_tuning_stages_lane[i]);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+        }
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "\n");
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plu_rx_polarity: 0x%x\n", reg_data->page_data.pddr_phy_info_page.plu_rx_polarity);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plu_tx_polarity: 0x%x\n", reg_data->page_data.pddr_phy_info_page.plu_tx_polarity);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plu_rx_pwrup: 0x%x\n", reg_data->page_data.pddr_phy_info_page.plu_rx_pwrup);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plu_tx_pwrup: 0x%x\n", reg_data->page_data.pddr_phy_info_page.plu_tx_pwrup);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "signal_detected: 0x%x\n", reg_data->page_data.pddr_phy_info_page.signal_detected);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plr_outstanding_cells: 0x%x\n", reg_data->page_data.pddr_phy_info_page.plr_outstanding_cells);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plu_rx_speed: 0x%x\n", reg_data->page_data.pddr_phy_info_page.plu_rx_speed);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plu_tx_speed: 0x%x\n", reg_data->page_data.pddr_phy_info_page.plu_tx_speed);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "sd_valid: 0x%x\n", reg_data->page_data.pddr_phy_info_page.sd_valid);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "ib_cfg_delay_timeout: 0x%x\n", reg_data->page_data.pddr_phy_info_page.ib_cfg_delay_timeout);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "irisc_status: 0x%x\n", reg_data->page_data.pddr_phy_info_page.irisc_status);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "stamping_reason: 0x%x\n", reg_data->page_data.pddr_phy_info_page.stamping_reason);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "kr_frame_lock_tuning_failure_events_count: 0x%x\n", reg_data->page_data.pddr_phy_info_page.kr_frame_lock_tuning_failure_events_count);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "kr_full_tuning_failure_count: 0x%x\n", reg_data->page_data.pddr_phy_info_page.kr_full_tuning_failure_count);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "ib_debug_indication: 0x%x\n", reg_data->page_data.pddr_phy_info_page.ib_debug_indication);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "pm_debug_indication: 0x%x\n", reg_data->page_data.pddr_phy_info_page.pm_debug_indication);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "pd_cat_val: 0x%x\n", reg_data->page_data.pddr_phy_info_page.pd_cat_val);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "pd_catastrophic_enum: 0x%x\n", reg_data->page_data.pddr_phy_info_page.pd_catastrophic_enum);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "hst_cat_val: 0x%x\n", reg_data->page_data.pddr_phy_info_page.hst_cat_val);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "hst_catastrophic_enum: 0x%x\n", reg_data->page_data.pddr_phy_info_page.hst_catastrophic_enum);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "an_cat_val: 0x%x\n", reg_data->page_data.pddr_phy_info_page.an_cat_val);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "an_catastrophic_enum: 0x%x\n", reg_data->page_data.pddr_phy_info_page.an_catastrophic_enum);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "pm_cat_val: 0x%x\n", reg_data->page_data.pddr_phy_info_page.pm_cat_val);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "pm_catastrophic_enum: 0x%x\n", reg_data->page_data.pddr_phy_info_page.pm_catastrophic_enum);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "pd_debug_indication: 0x%x\n", reg_data->page_data.pddr_phy_info_page.pd_debug_indication);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "psi_collision1: 0x%x\n", reg_data->page_data.pddr_phy_info_page.psi_collision1);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "psi_collision2: 0x%x\n", reg_data->page_data.pddr_phy_info_page.psi_collision2);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "hst_mismatch_reason: 0x%x\n", reg_data->page_data.pddr_phy_info_page.hst_mismatch_reason);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "fp_signal_detect_count: 0x%x\n", reg_data->page_data.pddr_phy_info_page.fp_signal_detect_count);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "pd_count: 0x%x\n", reg_data->page_data.pddr_phy_info_page.pd_count);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "nlpn_debug_ind_mask: 0x%x\n", reg_data->page_data.pddr_phy_info_page.nlpn_debug_ind_mask);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "phy2mod_speed_req: 0x%x\n", reg_data->page_data.pddr_phy_info_page.phy2mod_speed_req);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "eeprom_prsnt: 0x%x\n", reg_data->page_data.pddr_phy_info_page.eeprom_prsnt);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "no_dme_mod: 0x%x\n", reg_data->page_data.pddr_phy_info_page.no_dme_mod);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "one_pll_mod: 0x%x\n", reg_data->page_data.pddr_phy_info_page.one_pll_mod);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "tx_db_xdr_pointer_valid: 0x%x\n", reg_data->page_data.pddr_phy_info_page.tx_db_xdr_pointer_valid);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "tx_db_ndr_pointer_valid: 0x%x\n", reg_data->page_data.pddr_phy_info_page.tx_db_ndr_pointer_valid);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "tx_db_xdr_pointer: 0x%x\n", reg_data->page_data.pddr_phy_info_page.tx_db_xdr_pointer);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "tx_db_ndr_pointer: 0x%x\n", reg_data->page_data.pddr_phy_info_page.tx_db_ndr_pointer);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "phy2mod_ack_lanes: 0x%x\n", reg_data->page_data.pddr_phy_info_page.phy2mod_ack_lanes);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "phy2mod_deactivate_lanes: 0x%x\n", reg_data->page_data.pddr_phy_info_page.phy2mod_deactivate_lanes);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "port_xmit_pkts_inc_s1: 0x%x\n", reg_data->page_data.pddr_phy_info_page.port_xmit_pkts_inc_s1);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "port_xmit_pkts_inc_s0: 0x%x\n", reg_data->page_data.pddr_phy_info_page.port_xmit_pkts_inc_s0);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cnt_rx_frame_received_ok_s1: 0x%x\n", reg_data->page_data.pddr_phy_info_page.cnt_rx_frame_received_ok_s1);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cnt_rx_frame_received_ok_s0: 0x%x\n", reg_data->page_data.pddr_phy_info_page.cnt_rx_frame_received_ok_s0);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "macsec_en_plt1_s1: 0x%x\n", reg_data->page_data.pddr_phy_info_page.macsec_en_plt1_s1);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "macsec_en_plt1_s0: 0x%x\n", reg_data->page_data.pddr_phy_info_page.macsec_en_plt1_s0);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "macsec_en_plt0_s1: 0x%x\n", reg_data->page_data.pddr_phy_info_page.macsec_en_plt0_s1);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "macsec_en_plt0_s0: 0x%x\n", reg_data->page_data.pddr_phy_info_page.macsec_en_plt0_s0);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "reconciliation_mux_plt1: 0x%x\n", reg_data->page_data.pddr_phy_info_page.reconciliation_mux_plt1);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "reconciliation_mux_plt0: 0x%x\n", reg_data->page_data.pddr_phy_info_page.reconciliation_mux_plt0);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "tx_bypass_mux_plt1: 0x%x\n", reg_data->page_data.pddr_phy_info_page.tx_bypass_mux_plt1);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "tx_bypass_mux_plt0: 0x%x\n", reg_data->page_data.pddr_phy_info_page.tx_bypass_mux_plt0);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "rx_bypass_mux_plt1: 0x%x\n", reg_data->page_data.pddr_phy_info_page.rx_bypass_mux_plt1);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "rx_bypass_mux_plt0: 0x%x\n", reg_data->page_data.pddr_phy_info_page.rx_bypass_mux_plt0);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plr_rtt_hdr_threshold: 0x%x\n", reg_data->page_data.pddr_phy_info_page.plr_rtt_hdr_threshold);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plr_rtt_ndr_4x_kp4_threshold: 0x%x\n", reg_data->page_data.pddr_phy_info_page.plr_rtt_ndr_4x_kp4_threshold);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plr_rtt_xdr_1x_kp4_threshold: 0x%x\n", reg_data->page_data.pddr_phy_info_page.plr_rtt_xdr_1x_kp4_threshold);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plr_rtt_ndr_2x_kp4_threshold: 0x%x\n", reg_data->page_data.pddr_phy_info_page.plr_rtt_ndr_2x_kp4_threshold);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plr_rtt_ndr_4x_ell_threshold: 0x%x\n", reg_data->page_data.pddr_phy_info_page.plr_rtt_ndr_4x_ell_threshold);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plr_rtt_ndr_2x_ell_threshold: 0x%x\n", reg_data->page_data.pddr_phy_info_page.plr_rtt_ndr_2x_ell_threshold);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plr_rtt_xdr_2x_kp4_threshold: 0x%x\n", reg_data->page_data.pddr_phy_info_page.plr_rtt_xdr_2x_kp4_threshold);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plr_rtt_xdr_1x_ell_threshold: 0x%x\n", reg_data->page_data.pddr_phy_info_page.plr_rtt_xdr_1x_ell_threshold);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "recovery_retry_count: 0x%x\n", reg_data->page_data.pddr_phy_info_page.recovery_retry_count);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "max_recovery_count: 0x%x\n", reg_data->page_data.pddr_phy_info_page.max_recovery_count);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        break;
+
+    case SXD_PDDR_PAGE_SELECT_MODULE_INFO_PAGE_E:
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cable_technology: 0x%x\n", reg_data->page_data.pddr_module_info.cable_technology);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cable_breakout: 0x%x\n", reg_data->page_data.pddr_module_info.cable_breakout);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "ext_ethernet_compliance_code: 0x%x\n", reg_data->page_data.pddr_module_info.ext_ethernet_compliance_code);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "ethernet_compliance_code: 0x%x\n", reg_data->page_data.pddr_module_info.ethernet_compliance_code);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+		memset(str_buf, 0, sizeof(str_buf));
+		switch (reg_data->page_data.pddr_module_info.cable_type) {
+		case SXD_PDDR_CABLE_TYPE_ACTIVE_CABLE_E:
+			snprintf(str_buf, sizeof("Active cable"), "Active cable");
+			break;
+
+		case SXD_PDDR_CABLE_TYPE_OPTICAL_MODULE_E:
+			snprintf(str_buf, sizeof("Optical module"), "Optical module");
+			break;
+
+		case SXD_PDDR_CABLE_TYPE_PASSIVE_COPPER_CABLE_E:
+			snprintf(str_buf, sizeof("Passive copper or linear active copper cable"), "Passive copper or linear active copper cable");
+			break;
+
+		case SXD_PDDR_CABLE_TYPE_CABLE_UNPLUGGED_E:
+			snprintf(str_buf, sizeof("Cable unplugged"), "Cable unplugged");
+			break;
+
+		case SXD_PDDR_CABLE_TYPE_TWISTED_PAIR_E:
+			snprintf(str_buf, sizeof("Twisted pair"), "Twisted pair");
+			break;
+
+		case SXD_PDDR_CABLE_TYPE_UNIDENTIFIED_E:
+		default:
+			snprintf(str_buf, sizeof("Unidentified"), "Unidentified");
+			break;
+		}
+		snp_res = snprintf(buffer, buffer_length - buffer_size, "cable_type: %s\n", str_buf);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cable_vendor: 0x%x\n", reg_data->page_data.pddr_module_info.cable_vendor);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cable_length: 0x%x\n", reg_data->page_data.pddr_module_info.cable_length);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cable_identifier: 0x%x\n", reg_data->page_data.pddr_module_info.cable_identifier);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cable_power_class: 0x%x\n", reg_data->page_data.pddr_module_info.cable_power_class);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "max_power: 0x%x\n", reg_data->page_data.pddr_module_info.max_power);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cable_rx_amp: 0x%x\n", reg_data->page_data.pddr_module_info.cable_rx_amp);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cable_rx_emphasis: 0x%x\n", reg_data->page_data.pddr_module_info.cable_rx_emphasis);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cable_tx_equalization: 0x%x\n", reg_data->page_data.pddr_module_info.cable_tx_equalization);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cable_attenuation_25g: 0x%x\n", reg_data->page_data.pddr_module_info.cable_attenuation_25g);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cable_attenuation_12g: 0x%x\n", reg_data->page_data.pddr_module_info.cable_attenuation_12g);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cable_attenuation_7g: 0x%x\n", reg_data->page_data.pddr_module_info.cable_attenuation_7g);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cable_attenuation_5g: 0x%x\n", reg_data->page_data.pddr_module_info.cable_attenuation_5g);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cable_rx_post_emphasis: 0x%x\n", reg_data->page_data.pddr_module_info.cable_rx_post_emphasis);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "rx_cdr_cap: 0x%x\n", reg_data->page_data.pddr_module_info.rx_cdr_cap);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "tx_cdr_cap: 0x%x\n", reg_data->page_data.pddr_module_info.tx_cdr_cap);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "rx_cdr_state: 0x%x\n", reg_data->page_data.pddr_module_info.rx_cdr_state);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "tx_cdr_state: 0x%x\n", reg_data->page_data.pddr_module_info.tx_cdr_state);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+		memset(str_buf, 0, sizeof(str_buf));
+		snprintf(str_buf,
+				 SXD_PDDR_PDDR_MODULE_INFO_VENDOR_NAME_NUM + 1,
+				 "%s",
+				 reg_data->page_data.pddr_module_info.vendor_name);
+		snp_res = snprintf(buffer, buffer_length - buffer_size, "vendor_name: %s\n", str_buf);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		memset(str_buf, 0, sizeof(str_buf));
+		snprintf(str_buf,
+				 SXD_PDDR_PDDR_MODULE_INFO_VENDOR_PN_NUM + 1,
+				 "%s",
+				 reg_data->page_data.pddr_module_info.vendor_pn);
+		snp_res = snprintf(buffer, buffer_length - buffer_size, "vendor_pn: %s\n", str_buf);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		memset(str_buf, 0, sizeof(str_buf));
+		c = (char*)&reg_data->page_data.pddr_module_info.vendor_rev;
+		for (i = 0; i < 4; i++) {
+			if (c[i] != 0) {
+				str_buf[j++] = c[i];
+			}
+		}
+		str_buf[j] = '\0';
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "vendor_rev: %s\n", str_buf);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "fw_version: 0x%x\n", reg_data->page_data.pddr_module_info.fw_version);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+		memset(str_buf, 0, sizeof(str_buf));
+		snprintf(str_buf,
+				 SXD_PDDR_PDDR_MODULE_INFO_VENDOR_SN_NUM + 1,
+				 "%s",
+				 reg_data->page_data.pddr_module_info.vendor_sn);
+		snp_res = snprintf(buffer, buffer_length - buffer_size, "vendor_sn: %s\n", str_buf);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "temperature: 0x%x\n", reg_data->page_data.pddr_module_info.temperature);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "voltage: 0x%x\n", reg_data->page_data.pddr_module_info.voltage);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "rx_power_lane0: %u.%u \n",
+						   DIV(reg_data->page_data.pddr_module_info.rx_power_lane0, MODULE_INFO_TX_RX_POWER_GRAN),
+						   MOD(reg_data->page_data.pddr_module_info.rx_power_lane0, MODULE_INFO_TX_RX_POWER_GRAN));
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "rx_power_lane1: %u.%u \n",
+						   DIV(reg_data->page_data.pddr_module_info.rx_power_lane1, MODULE_INFO_TX_RX_POWER_GRAN),
+						   MOD(reg_data->page_data.pddr_module_info.rx_power_lane1, MODULE_INFO_TX_RX_POWER_GRAN));
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "rx_power_lane2: %u.%u \n",
+						   DIV(reg_data->page_data.pddr_module_info.rx_power_lane2, MODULE_INFO_TX_RX_POWER_GRAN),
+						   MOD(reg_data->page_data.pddr_module_info.rx_power_lane2, MODULE_INFO_TX_RX_POWER_GRAN));
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "rx_power_lane3: %u.%u \n",
+						   DIV(reg_data->page_data.pddr_module_info.rx_power_lane3, MODULE_INFO_TX_RX_POWER_GRAN),
+						   MOD(reg_data->page_data.pddr_module_info.rx_power_lane3, MODULE_INFO_TX_RX_POWER_GRAN));
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "rx_power_lane4: %u.%u \n",
+						   DIV(reg_data->page_data.pddr_module_info.rx_power_lane4, MODULE_INFO_TX_RX_POWER_GRAN),
+						   MOD(reg_data->page_data.pddr_module_info.rx_power_lane4, MODULE_INFO_TX_RX_POWER_GRAN));
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "rx_power_lane5: %u.%u \n",
+						   DIV(reg_data->page_data.pddr_module_info.rx_power_lane5, MODULE_INFO_TX_RX_POWER_GRAN),
+						   MOD(reg_data->page_data.pddr_module_info.rx_power_lane5, MODULE_INFO_TX_RX_POWER_GRAN));
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "rx_power_lane6: %u.%u \n",
+						   DIV(reg_data->page_data.pddr_module_info.rx_power_lane6, MODULE_INFO_TX_RX_POWER_GRAN),
+						   MOD(reg_data->page_data.pddr_module_info.rx_power_lane6, MODULE_INFO_TX_RX_POWER_GRAN));
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "rx_power_lane7: %u.%u \n",
+						   DIV(reg_data->page_data.pddr_module_info.rx_power_lane7, MODULE_INFO_TX_RX_POWER_GRAN),
+						   MOD(reg_data->page_data.pddr_module_info.rx_power_lane7, MODULE_INFO_TX_RX_POWER_GRAN));
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "tx_power_lane0: %u.%u \n",
+						   DIV(reg_data->page_data.pddr_module_info.tx_power_lane0, MODULE_INFO_TX_RX_POWER_GRAN),
+						   MOD(reg_data->page_data.pddr_module_info.tx_power_lane0, MODULE_INFO_TX_RX_POWER_GRAN));
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "tx_power_lane1: %u.%u \n",
+						   DIV(reg_data->page_data.pddr_module_info.tx_power_lane1, MODULE_INFO_TX_RX_POWER_GRAN),
+						   MOD(reg_data->page_data.pddr_module_info.tx_power_lane1, MODULE_INFO_TX_RX_POWER_GRAN));
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "tx_power_lane2: %u.%u \n",
+						   DIV(reg_data->page_data.pddr_module_info.tx_power_lane2, MODULE_INFO_TX_RX_POWER_GRAN),
+						   MOD(reg_data->page_data.pddr_module_info.tx_power_lane2, MODULE_INFO_TX_RX_POWER_GRAN));
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "tx_power_lane3: %u.%u \n",
+						   DIV(reg_data->page_data.pddr_module_info.tx_power_lane3, MODULE_INFO_TX_RX_POWER_GRAN),
+						   MOD(reg_data->page_data.pddr_module_info.tx_power_lane3, MODULE_INFO_TX_RX_POWER_GRAN));
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "tx_power_lane4: %u.%u \n",
+						   DIV(reg_data->page_data.pddr_module_info.tx_power_lane4, MODULE_INFO_TX_RX_POWER_GRAN),
+						   MOD(reg_data->page_data.pddr_module_info.tx_power_lane4, MODULE_INFO_TX_RX_POWER_GRAN));
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "tx_power_lane5: %u.%u \n",
+						   DIV(reg_data->page_data.pddr_module_info.tx_power_lane5, MODULE_INFO_TX_RX_POWER_GRAN),
+						   MOD(reg_data->page_data.pddr_module_info.tx_power_lane5, MODULE_INFO_TX_RX_POWER_GRAN));
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "tx_power_lane6: %u.%u \n",
+						   DIV(reg_data->page_data.pddr_module_info.tx_power_lane6, MODULE_INFO_TX_RX_POWER_GRAN),
+						   MOD(reg_data->page_data.pddr_module_info.tx_power_lane6, MODULE_INFO_TX_RX_POWER_GRAN));
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "tx_power_lane7: %u.%u \n",
+						   DIV(reg_data->page_data.pddr_module_info.tx_power_lane7, MODULE_INFO_TX_RX_POWER_GRAN),
+						   MOD(reg_data->page_data.pddr_module_info.tx_power_lane7, MODULE_INFO_TX_RX_POWER_GRAN));
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "tx_bias_lane0: %u \n",
+						   reg_data->page_data.pddr_module_info.tx_bias_lane0 * MODULE_INFO_TX_RX_BIAS_CURRNET_GRAN);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "tx_bias_lane1: %u \n",
+						   reg_data->page_data.pddr_module_info.tx_bias_lane1 * MODULE_INFO_TX_RX_BIAS_CURRNET_GRAN);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "tx_bias_lane2: %u \n",
+						   reg_data->page_data.pddr_module_info.tx_bias_lane2 * MODULE_INFO_TX_RX_BIAS_CURRNET_GRAN);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "tx_bias_lane3: %u \n",
+						   reg_data->page_data.pddr_module_info.tx_bias_lane3 * MODULE_INFO_TX_RX_BIAS_CURRNET_GRAN);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "tx_bias_lane4: %u \n",
+						   reg_data->page_data.pddr_module_info.tx_bias_lane4 * MODULE_INFO_TX_RX_BIAS_CURRNET_GRAN);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "tx_bias_lane5: %u \n",
+						   reg_data->page_data.pddr_module_info.tx_bias_lane5 * MODULE_INFO_TX_RX_BIAS_CURRNET_GRAN);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "tx_bias_lane6: %u \n",
+						   reg_data->page_data.pddr_module_info.tx_bias_lane6 * MODULE_INFO_TX_RX_BIAS_CURRNET_GRAN);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "tx_bias_lane7: %u \n",
+						   reg_data->page_data.pddr_module_info.tx_bias_lane7 * MODULE_INFO_TX_RX_BIAS_CURRNET_GRAN);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "temperature_high_th: 0x%x\n", reg_data->page_data.pddr_module_info.temperature_high_th);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "temperature_low_th: 0x%x\n", reg_data->page_data.pddr_module_info.temperature_low_th);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "voltage_high_th: 0x%x\n", reg_data->page_data.pddr_module_info.voltage_high_th);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "voltage_low_th: 0x%x\n", reg_data->page_data.pddr_module_info.voltage_low_th);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "rx_power_high_th: %u.%u \n",
+						   DIV(reg_data->page_data.pddr_module_info.rx_power_high_th, MODULE_INFO_TX_RX_POWER_GRAN),
+						   MOD(reg_data->page_data.pddr_module_info.rx_power_high_th, MODULE_INFO_TX_RX_POWER_GRAN));
+							VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "rx_power_low_th: %u.%u \n",
+						   DIV(reg_data->page_data.pddr_module_info.rx_power_low_th, MODULE_INFO_TX_RX_POWER_GRAN),
+						   MOD(reg_data->page_data.pddr_module_info.rx_power_low_th, MODULE_INFO_TX_RX_POWER_GRAN));
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "tx_power_high_th: %u.%u \n",
+						   DIV(reg_data->page_data.pddr_module_info.tx_power_high_th, MODULE_INFO_TX_RX_POWER_GRAN),
+						   MOD(reg_data->page_data.pddr_module_info.tx_power_high_th, MODULE_INFO_TX_RX_POWER_GRAN));
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "tx_power_low_th: %u.%u \n",
+						   DIV(reg_data->page_data.pddr_module_info.tx_power_low_th, MODULE_INFO_TX_RX_POWER_GRAN),
+						   MOD(reg_data->page_data.pddr_module_info.tx_power_low_th, MODULE_INFO_TX_RX_POWER_GRAN));
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "tx_bias_high_th: %u \n",
+						   reg_data->page_data.pddr_module_info.tx_bias_high_th * MODULE_INFO_TX_RX_BIAS_CURRNET_GRAN);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "tx_bias_low_th: %u \n",
+						   reg_data->page_data.pddr_module_info.tx_bias_low_th * MODULE_INFO_TX_RX_BIAS_CURRNET_GRAN);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "module_st: 0x%x\n", reg_data->page_data.pddr_module_info.module_st);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "rx_power_type: 0x%x\n", reg_data->page_data.pddr_module_info.rx_power_type);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "did_cap: 0x%x\n", reg_data->page_data.pddr_module_info.did_cap);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "rx_output_valid_cap: 0x%x\n", reg_data->page_data.pddr_module_info.rx_output_valid_cap);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "smf_length: 0x%x\n", reg_data->page_data.pddr_module_info.smf_length);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "wavelength: 0x%x\n", reg_data->page_data.pddr_module_info.wavelength);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "active_set_host_compliance_code: 0x%x\n", reg_data->page_data.pddr_module_info.active_set_host_compliance_code);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "active_set_media_compliance_code: 0x%x\n", reg_data->page_data.pddr_module_info.active_set_media_compliance_code);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "tx_bias_scaling_factor: 0x%x\n", reg_data->page_data.pddr_module_info.tx_bias_scaling_factor);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "ib_compliance_code: 0x%x\n", reg_data->page_data.pddr_module_info.ib_compliance_code);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "nbr250: 0x%x\n", reg_data->page_data.pddr_module_info.nbr250);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "nbr100: 0x%x\n", reg_data->page_data.pddr_module_info.nbr100);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "monitor_cap_mask: 0x%x\n", reg_data->page_data.pddr_module_info.monitor_cap_mask);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "ib_width: 0x%x\n", reg_data->page_data.pddr_module_info.ib_width);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+		for (i = 0; i < SXD_PDDR_PDDR_MODULE_INFO_DP_ST_LANE_NUM; i++) {
+			snp_res = snprintf(buffer, buffer_length - buffer_size,
+			"dp_st_lane[%d]: 0x%x\n",
+			i, reg_data->page_data.pddr_module_info.dp_st_lane[i]);
+			VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+			buffer += snp_res;
+			buffer_size += snp_res;
+		}
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "length_om2: 0x%x\n", reg_data->page_data.pddr_module_info.length_om2);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "length_om3: 0x%x\n", reg_data->page_data.pddr_module_info.length_om3);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "length_om4: 0x%x\n", reg_data->page_data.pddr_module_info.length_om4);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "length_om5: 0x%x\n", reg_data->page_data.pddr_module_info.length_om5);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "length_om1: 0x%x\n", reg_data->page_data.pddr_module_info.length_om1);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "wavelength_tolerance: 0x%x\n", reg_data->page_data.pddr_module_info.wavelength_tolerance);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "memory_map_rev: 0x%x\n", reg_data->page_data.pddr_module_info.memory_map_rev);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "memory_map_compliance: 0x%x\n", reg_data->page_data.pddr_module_info.memory_map_compliance);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+		date_code = MODULE_INFO_DATE_CODE_STRING_CONVERT(be64_to_cpu(reg_data->page_data.pddr_module_info.date_code));
+		memset(str_buf, 0, sizeof(str_buf));
+		strncpy(str_buf, (char *)&date_code, 8);
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "date_code: 20%s \n",
+						   str_buf);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "connector_type: 0x%x\n", reg_data->page_data.pddr_module_info.connector_type);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "vendor_oui: 0x%x\n", reg_data->page_data.pddr_module_info.vendor_oui);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "tx_input_freq_sync: 0x%x\n", reg_data->page_data.pddr_module_info.tx_input_freq_sync);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cable_attenuation_53g: 0x%x\n", reg_data->page_data.pddr_module_info.cable_attenuation_53g);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "rx_output_valid: 0x%x\n", reg_data->page_data.pddr_module_info.rx_output_valid);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "max_fiber_length: 0x%x\n", reg_data->page_data.pddr_module_info.max_fiber_length);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cdr_vendor: 0x%x\n", reg_data->page_data.pddr_module_info.cdr_vendor);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "error_code: 0x%x\n", reg_data->page_data.pddr_module_info.error_code);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser_enabled: 0x%x\n", reg_data->page_data.pddr_module_info.laser_enabled);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser2_enabled: 0x%x\n", reg_data->page_data.pddr_module_info.laser2_enabled);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser_status: 0x%x\n", reg_data->page_data.pddr_module_info.laser_status);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser2_status: 0x%x\n", reg_data->page_data.pddr_module_info.laser2_status);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser_restriction: 0x%x\n", reg_data->page_data.pddr_module_info.laser_restriction);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser2_restriction: 0x%x\n", reg_data->page_data.pddr_module_info.laser2_restriction);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "els_oper_state: 0x%x\n", reg_data->page_data.pddr_module_info.els_oper_state);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "els2_oper_state: 0x%x\n", reg_data->page_data.pddr_module_info.els2_oper_state);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "els_laser_fault_state: 0x%x\n", reg_data->page_data.pddr_module_info.els_laser_fault_state);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "els_laser2_fault_state: 0x%x\n", reg_data->page_data.pddr_module_info.els_laser2_fault_state);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "module_production_test_revision_lsb: 0x%x\n", reg_data->page_data.pddr_module_info.module_production_test_revision_lsb);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "module_production_test_revision_msb: 0x%x\n", reg_data->page_data.pddr_module_info.module_production_test_revision_msb);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        break;
+
+    case SXD_PDDR_PAGE_SELECT_PORT_EVENTS_PAGE_E:
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "invalid_fsm_sv: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.invalid_fsm_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "invalid_fsm_ps: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.invalid_fsm_ps);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "merger_tx_eb_underrun: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.merger_tx_eb_underrun);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "bubble_in_pkt: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.bubble_in_pkt);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "kr_false_ready_sv: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.kr_false_ready_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "kr_false_ready: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.kr_false_ready);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "mod_req_nack_sv: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.mod_req_nack_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "mod_req_nack: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.mod_req_nack);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "mod_req_busy_sv: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.mod_req_busy_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "mod_req_busy: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.mod_req_busy);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "mod_config_to_sv: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.mod_config_to_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "mod_config_to: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.mod_config_to);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "mod_adapt_faild_sv: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.mod_adapt_faild_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "mod_adapt_faild: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.mod_adapt_faild);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "pm_fifo_full_sv: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.pm_fifo_full_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "pm_fifo_full: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.pm_fifo_full);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "protocol_check_sv: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.protocol_check_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "protocol_check: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.protocol_check);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "input_event_sv: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.input_event_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "input_event: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.input_event);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "lane_mapping_sv: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.lane_mapping_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "lane_mapping: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.lane_mapping);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "qsfp_zero_atten_sv: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.qsfp_zero_atten_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "qsfp_zero_atten: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.qsfp_zero_atten);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "mono_reach_low_limit_sv: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.mono_reach_low_limit_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "mono_reach_low_limit: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.mono_reach_low_limit);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "mono_reach_high_limit_sv: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.mono_reach_high_limit_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "mono_reach_high_limit: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.mono_reach_high_limit);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "mono_flow_height_sv: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.mono_flow_height_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "mono_flow_height: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.mono_flow_height);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "single_gains_bad_val_sv: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.single_gains_bad_val_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "single_gains_bad_val: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.single_gains_bad_val);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "init_all_gains_bad_val_sv: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.init_all_gains_bad_val_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "init_all_gains_bad_val: 0x%x\n", reg_data->page_data.pddr_port_events_page_layout.init_all_gains_bad_val);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        for (i = 0; i < SXD_PDDR_PDDR_PORT_EVENTS_PAGE_LAYOUT_CLR_MASK_NUM; i++) {
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "clr_mask[%d]: 0x%x\n", i, reg_data->page_data.pddr_port_events_page_layout.clr_mask[i]);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+        }
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "\n");
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        break;
+
+    case SXD_PDDR_PAGE_SELECT_DEVICE_EVENTS_PAGE_E:
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "invalid_port_access_sv: 0x%x\n", reg_data->page_data.pddr_device_events_page.invalid_port_access_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "invalid_port_access: 0x%x\n", reg_data->page_data.pddr_device_events_page.invalid_port_access);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "pll_state_sv_1: 0x%x\n", reg_data->page_data.pddr_device_events_page.pll_state_sv_1);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "pll_state_mask_center1: 0x%x\n", reg_data->page_data.pddr_device_events_page.pll_state_mask_center1);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "pll_state_sv_0: 0x%x\n", reg_data->page_data.pddr_device_events_page.pll_state_sv_0);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "pll_state_mask_center0: 0x%x\n", reg_data->page_data.pddr_device_events_page.pll_state_mask_center0);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "main_irisc_timeout: 0x%x\n", reg_data->page_data.pddr_device_events_page.main_irisc_timeout);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "tile_irisc_timeout: 0x%x\n", reg_data->page_data.pddr_device_events_page.tile_irisc_timeout);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plu_timeout0: 0x%x\n", reg_data->page_data.pddr_device_events_page.plu_timeout0);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plu_timeout1: 0x%x\n", reg_data->page_data.pddr_device_events_page.plu_timeout1);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plu_timeout2: 0x%x\n", reg_data->page_data.pddr_device_events_page.plu_timeout2);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plu_timeout3: 0x%x\n", reg_data->page_data.pddr_device_events_page.plu_timeout3);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plu_timeout4: 0x%x\n", reg_data->page_data.pddr_device_events_page.plu_timeout4);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cr_space_timeout_mcm_main: 0x%x\n", reg_data->page_data.pddr_device_events_page.cr_space_timeout_mcm_main);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cr_space_timeout_sv: 0x%x\n", reg_data->page_data.pddr_device_events_page.cr_space_timeout_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cr_space_timeout: 0x%x\n", reg_data->page_data.pddr_device_events_page.cr_space_timeout);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "analog_phy_to_sv: 0x%x\n", reg_data->page_data.pddr_device_events_page.analog_phy_to_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "analog_phy_to: 0x%x\n", reg_data->page_data.pddr_device_events_page.analog_phy_to);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "logical_phy_to_sv: 0x%x\n", reg_data->page_data.pddr_device_events_page.logical_phy_to_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "logical_phy_to: 0x%x\n", reg_data->page_data.pddr_device_events_page.logical_phy_to);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "varactors_calib_fail_center1_sv: 0x%x\n", reg_data->page_data.pddr_device_events_page.varactors_calib_fail_center1_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "varactors_calib_fail_center1: 0x%x\n", reg_data->page_data.pddr_device_events_page.varactors_calib_fail_center1);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "varactors_calib_fail_center0_sv: 0x%x\n", reg_data->page_data.pddr_device_events_page.varactors_calib_fail_center0_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "varactors_calib_fail_center0: 0x%x\n", reg_data->page_data.pddr_device_events_page.varactors_calib_fail_center0);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "irisc_stuck_mask_sv: 0x%x\n", reg_data->page_data.pddr_device_events_page.irisc_stuck_mask_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "irisc_stuck_mask: 0x%x\n", reg_data->page_data.pddr_device_events_page.irisc_stuck_mask);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "pll_lock_sv_1: 0x%x\n", reg_data->page_data.pddr_device_events_page.pll_lock_sv_1);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "pll_unlocl_mask_center1: 0x%x\n", reg_data->page_data.pddr_device_events_page.pll_unlocl_mask_center1);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "pll_lock_sv_0: 0x%x\n", reg_data->page_data.pddr_device_events_page.pll_lock_sv_0);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "pll_unlocl_mask_center0: 0x%x\n", reg_data->page_data.pddr_device_events_page.pll_unlocl_mask_center0);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "uc_stack_overflow: 0x%x\n", reg_data->page_data.pddr_device_events_page.uc_stack_overflow);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "uc_crspace_timeout: 0x%x\n", reg_data->page_data.pddr_device_events_page.uc_crspace_timeout);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "pwr_governor_err_sv: 0x%x\n", reg_data->page_data.pddr_device_events_page.pwr_governor_err_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "pwr_governor_err: 0x%x\n", reg_data->page_data.pddr_device_events_page.pwr_governor_err);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "timer_error_sv: 0x%x\n", reg_data->page_data.pddr_device_events_page.timer_error_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "timer_error: 0x%x\n", reg_data->page_data.pddr_device_events_page.timer_error);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "iopl_err_center1_sv: 0x%x\n", reg_data->page_data.pddr_device_events_page.iopl_err_center1_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "iopl_err_center1: 0x%x\n", reg_data->page_data.pddr_device_events_page.iopl_err_center1);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "iopl_err_center0_sv: 0x%x\n", reg_data->page_data.pddr_device_events_page.iopl_err_center0_sv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "iopl_err_center0: 0x%x\n", reg_data->page_data.pddr_device_events_page.iopl_err_center0);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        for (i = 0; i < SXD_PDDR_PDDR_DEVICE_EVENTS_PAGE_CLR_MASK_NUM; i++) {
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "clr_mask[%d]: 0x%x\n", i, reg_data->page_data.pddr_device_events_page.clr_mask[i]);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+        }
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "\n");
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "main_irisc_address: 0x%x\n", reg_data->page_data.pddr_device_events_page.main_irisc_address);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "main_irisc_ip: 0x%x\n", reg_data->page_data.pddr_device_events_page.main_irisc_ip);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "tile_irisc_address: 0x%x\n", reg_data->page_data.pddr_device_events_page.tile_irisc_address);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "tile_irisc_ip: 0x%x\n", reg_data->page_data.pddr_device_events_page.tile_irisc_ip);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plu_timeout0_address: 0x%x\n", reg_data->page_data.pddr_device_events_page.plu_timeout0_address);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plu_timeout1_address: 0x%x\n", reg_data->page_data.pddr_device_events_page.plu_timeout1_address);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plu_timeout2_address: 0x%x\n", reg_data->page_data.pddr_device_events_page.plu_timeout2_address);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plu_timeout3_address: 0x%x\n", reg_data->page_data.pddr_device_events_page.plu_timeout3_address);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plu_timeout4_address: 0x%x\n", reg_data->page_data.pddr_device_events_page.plu_timeout4_address);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plu_timeout0_cluster: 0x%x\n", reg_data->page_data.pddr_device_events_page.plu_timeout0_cluster);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plu_timeout1_cluster: 0x%x\n", reg_data->page_data.pddr_device_events_page.plu_timeout1_cluster);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plu_timeout2_cluster: 0x%x\n", reg_data->page_data.pddr_device_events_page.plu_timeout2_cluster);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plu_timeout3_cluster: 0x%x\n", reg_data->page_data.pddr_device_events_page.plu_timeout3_cluster);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "plu_timeout4_cluster: 0x%x\n", reg_data->page_data.pddr_device_events_page.plu_timeout4_cluster);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "irisc_tile_idx: 0x%x\n", reg_data->page_data.pddr_device_events_page.irisc_tile_idx);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "uc_crspace_timeout_lane: 0x%x\n", reg_data->page_data.pddr_device_events_page.uc_crspace_timeout_lane);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "uc_crspace_timeout_cl: 0x%x\n", reg_data->page_data.pddr_device_events_page.uc_crspace_timeout_cl);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "uc_stack_overflow_lane: 0x%x\n", reg_data->page_data.pddr_device_events_page.uc_stack_overflow_lane);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "uc_stack_overflow_cl: 0x%x\n", reg_data->page_data.pddr_device_events_page.uc_stack_overflow_cl);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        break;
+
+    case SXD_PDDR_PAGE_SELECT_LINK_DOWN_INFO_E:
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "down_intent: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.down_intent);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "down_blame: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.down_blame);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "recovery_entry_reason: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.recovery_entry_reason);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "local_reason_opcode: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.local_reason_opcode);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "remote_reason_opcode: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.remote_reason_opcode);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "last_recovery_state: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.last_recovery_state);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "l1_failure_reason: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.l1_failure_reason);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "ts1_opcode: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.ts1_opcode);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "e2e_reason_opcode: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.e2e_reason_opcode);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cons_raw_norm_ber: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.cons_raw_norm_ber);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "last_raw_ber_coef: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.last_raw_ber_coef);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "last_raw_ber_magnitude: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.last_raw_ber_magnitude);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "num_of_symbol_ber_alarms: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.num_of_symbol_ber_alarms);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "min_raw_ber_coef: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.min_raw_ber_coef);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "min_raw_ber_magnitude: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.min_raw_ber_magnitude);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "max_raw_ber_coef: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.max_raw_ber_coef);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "max_raw_ber_magnitude: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.max_raw_ber_magnitude);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "num_of_eff_ber_alarms: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.num_of_eff_ber_alarms);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "num_of_raw_ber_alarms: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.num_of_raw_ber_alarms);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "time_to_link_down_to_disable: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.time_to_link_down_to_disable);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "time_to_link_down_to_rx_loss: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.time_to_link_down_to_rx_loss);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cons_eff_norm_ber: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.cons_eff_norm_ber);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "last_eff_ber_coef: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.last_eff_ber_coef);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "last_eff_ber_magnitude: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.last_eff_ber_magnitude);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "min_eff_ber_coef: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.min_eff_ber_coef);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "min_eff_ber_magnitude: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.min_eff_ber_magnitude);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cons_symbol_norm_ber: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.cons_symbol_norm_ber);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "max_symbol_ber_coef: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.max_symbol_ber_coef);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "max_symbol_ber_magnitude: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.max_symbol_ber_magnitude);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "max_eff_ber_coef: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.max_eff_ber_coef);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "max_eff_ber_magnitude: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.max_eff_ber_magnitude);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "last_symbol_ber_coef: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.last_symbol_ber_coef);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "last_symbol_ber_magnitude: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.last_symbol_ber_magnitude);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "min_symbol_ber_coef: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.min_symbol_ber_coef);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "min_symbol_ber_magnitude: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.min_symbol_ber_magnitude);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "hi_ser_counter: 0x%x\n", reg_data->page_data.pddr_link_down_info_page.hi_ser_counter);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        break;
+
+    case SXD_PDDR_PAGE_SELECT_LINK_DOWN_EVENTS_E:
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "ib_port_events: 0x%x\n", reg_data->page_data.pddr_link_down_events_page.ib_port_events);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "ethernet_port_events: 0x%x\n", reg_data->page_data.pddr_link_down_events_page.ethernet_port_events);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "general_port_events: 0x%x\n", reg_data->page_data.pddr_link_down_events_page.general_port_events);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        break;
+
+    case SXD_PDDR_PAGE_SELECT_LINK_UP_INFO_E:
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "up_reason_pwr: 0x%x\n", reg_data->page_data.pddr_link_up_info_page.up_reason_pwr);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "up_reason_drv: 0x%x\n", reg_data->page_data.pddr_link_up_info_page.up_reason_drv);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "up_reason_mng: 0x%x\n", reg_data->page_data.pddr_link_up_info_page.up_reason_mng);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "time_to_link_up: 0x%x\n", reg_data->page_data.pddr_link_up_info_page.time_to_link_up);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "lt_cnt: 0x%x\n", reg_data->page_data.pddr_link_up_info_page.lt_cnt);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "fast_link_up_status: 0x%x\n", reg_data->page_data.pddr_link_up_info_page.fast_link_up_status);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "time_to_link_up_phy_up_to_active: 0x%x\n", reg_data->page_data.pddr_link_up_info_page.time_to_link_up_phy_up_to_active);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "time_to_link_up_sd_to_phy_up: 0x%x\n", reg_data->page_data.pddr_link_up_info_page.time_to_link_up_sd_to_phy_up);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "time_to_link_up_disable_to_sd: 0x%x\n", reg_data->page_data.pddr_link_up_info_page.time_to_link_up_disable_to_sd);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "time_to_link_up_disable_to_pd: 0x%x\n", reg_data->page_data.pddr_link_up_info_page.time_to_link_up_disable_to_pd);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "time_of_module_conf_done_up: 0x%x\n", reg_data->page_data.pddr_link_up_info_page.time_of_module_conf_done_up);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "time_of_module_conf_done_down: 0x%x\n", reg_data->page_data.pddr_link_up_info_page.time_of_module_conf_done_down);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "time_logical_init_to_active: 0x%x\n", reg_data->page_data.pddr_link_up_info_page.time_logical_init_to_active);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "total_time_pcs_local_fault: 0x%x\n", reg_data->page_data.pddr_link_up_info_page.total_time_pcs_local_fault);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "total_time_pcs_remote_fault: 0x%x\n", reg_data->page_data.pddr_link_up_info_page.total_time_pcs_remote_fault);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "time_on_last_hi_ser: 0x%x\n", reg_data->page_data.pddr_link_up_info_page.time_on_last_hi_ser);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        break;
+
+    case SXD_PDDR_PAGE_SELECT_MODULE_LATCHED_FLAG_INFO_PAGE_E:
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "temp_flags_high_al: 0x%x\n",
+						   reg_data->page_data.module_latched_flag_info.temp_flags &
+						   SXD_PDDR_TEMP_FLAGS_HIGH_TEMP_ALARM_E);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "temp_flags_low_al: 0x%x\n",
+						   reg_data->page_data.module_latched_flag_info.temp_flags &
+						   SXD_PDDR_TEMP_FLAGS_LOW_TEMP_ALARM_E);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "temp_flags_high_war: 0x%x\n",
+						   reg_data->page_data.module_latched_flag_info.temp_flags &
+						   SXD_PDDR_TEMP_FLAGS_HIGH_TEMP_WARNING_E);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "temp_flags_low_war: 0x%x\n",
+						   reg_data->page_data.module_latched_flag_info.temp_flags &
+						   SXD_PDDR_TEMP_FLAGS_LOW_TEMP_WARNING_E);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "vcc_flags_high_al: 0x%x\n",
+						   reg_data->page_data.module_latched_flag_info.vcc_flags &
+						   SXD_PDDR_VCC_FLAGS_HIGH_VCC_ALARM_E);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "vcc_flags_low_al: 0x%x\n",
+						   reg_data->page_data.module_latched_flag_info.vcc_flags &
+						   SXD_PDDR_VCC_FLAGS_LOW_VCC_ALARM_E);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "vcc_flags_high_war: 0x%x\n",
+						   reg_data->page_data.module_latched_flag_info.vcc_flags &
+						   SXD_PDDR_VCC_FLAGS_HIGH_VCC_WARNING_E);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+
+		snp_res = snprintf(buffer,
+						   buffer_length - buffer_size,
+						   "vcc_flags_low_war: 0x%x\n",
+						   reg_data->page_data.module_latched_flag_info.vcc_flags &
+						   SXD_PDDR_VCC_FLAGS_LOW_VCC_WARNING_E);
+		VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		buffer += snp_res;
+		buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "mod_fw_fault: 0x%x\n", reg_data->page_data.module_latched_flag_info.mod_fw_fault);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "dp_fw_fault: 0x%x\n", reg_data->page_data.module_latched_flag_info.dp_fw_fault);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "rx_los_cap: 0x%x\n", reg_data->page_data.module_latched_flag_info.rx_los_cap);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+		for (i = 0; i < MAX_LANE_INFO_PDDR_MODULE_SYSFS_GET; i++) {
+			snp_res = snprintf(buffer,
+							   buffer_length - buffer_size,
+							   "tx_fault_lane%u: 0x%x\n", i,
+							   GET_BIT_IN_MASK(reg_data->page_data.module_latched_flag_info.tx_fault, i));
+		 VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+		 buffer += snp_res;
+		 buffer_size += snp_res;
+		}
+		for (i = 0; i < MAX_LANE_INFO_PDDR_MODULE_SYSFS_GET; i++) {
+			snp_res = snprintf(buffer,
+							   buffer_length - buffer_size,
+							   "tx_los_lane%u: 0x%x\n", i,
+							   GET_BIT_IN_MASK(reg_data->page_data.module_latched_flag_info.tx_los, i));
+			VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+			buffer += snp_res;
+			buffer_size += snp_res;
+		}
+		for (i = 0; i < MAX_LANE_INFO_PDDR_MODULE_SYSFS_GET; i++) {
+			snp_res = snprintf(buffer,
+							   buffer_length - buffer_size,
+							   "tx_cdr_lol_lane%u: 0x%x\n", i,
+							   GET_BIT_IN_MASK(reg_data->page_data.module_latched_flag_info.tx_cdr_lol, i));
+			VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+			buffer += snp_res;
+			buffer_size += snp_res;
+		}
+		for (i = 0; i < MAX_LANE_INFO_PDDR_MODULE_SYSFS_GET; i++) {
+			snp_res = snprintf(buffer,
+							   buffer_length - buffer_size,
+							   "tx_ad_eq_fault_lane%u: 0x%x\n", i,
+							   GET_BIT_IN_MASK(reg_data->page_data.module_latched_flag_info.tx_ad_eq_fault, i));
+			VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+			buffer += snp_res;
+			buffer_size += snp_res;
+		}
+		for (i = 0; i < MAX_LANE_INFO_PDDR_MODULE_SYSFS_GET; i++) {
+			snp_res = snprintf(buffer,
+							   buffer_length - buffer_size,
+							   "tx_power_hi_al_lane%u: 0x%x\n", i,
+							   GET_BIT_IN_MASK(reg_data->page_data.module_latched_flag_info.tx_power_hi_al, i));
+			VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+			buffer += snp_res;
+			buffer_size += snp_res;
+		 }
+		for (i = 0; i < MAX_LANE_INFO_PDDR_MODULE_SYSFS_GET; i++) {
+			snp_res = snprintf(buffer,
+							   buffer_length - buffer_size,
+							   "tx_power_lo_al_lane%u: 0x%x\n", i,
+							   GET_BIT_IN_MASK(reg_data->page_data.module_latched_flag_info.tx_power_lo_al, i));
+			VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+			buffer += snp_res;
+			buffer_size += snp_res;
+		}
+		for (i = 0; i < MAX_LANE_INFO_PDDR_MODULE_SYSFS_GET; i++) {
+			snp_res = snprintf(buffer,
+							   buffer_length - buffer_size,
+							   "tx_power_hi_war_lane%u: 0x%x\n", i,
+							   GET_BIT_IN_MASK(reg_data->page_data.module_latched_flag_info.tx_power_hi_war, i));
+			VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+			buffer += snp_res;
+			buffer_size += snp_res;
+		}
+		for (i = 0; i < MAX_LANE_INFO_PDDR_MODULE_SYSFS_GET; i++) {
+			snp_res = snprintf(buffer,
+							   buffer_length - buffer_size,
+							   "tx_power_lo_war_lane%u: 0x%x\n", i,
+							   GET_BIT_IN_MASK(reg_data->page_data.module_latched_flag_info.tx_power_lo_war, i));
+			VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+			buffer += snp_res;
+			buffer_size += snp_res;
+		}
+		for (i = 0; i < MAX_LANE_INFO_PDDR_MODULE_SYSFS_GET; i++) {
+			snp_res = snprintf(buffer,
+							   buffer_length - buffer_size,
+							   "tx_bias_hi_al_lane%u: 0x%x\n", i,
+							   GET_BIT_IN_MASK(reg_data->page_data.module_latched_flag_info.tx_bias_hi_al, i));
+			VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+			buffer += snp_res;
+			buffer_size += snp_res;
+		}
+		for (i = 0; i < MAX_LANE_INFO_PDDR_MODULE_SYSFS_GET; i++) {
+			snp_res = snprintf(buffer,
+							   buffer_length - buffer_size,
+							   "tx_bias_lo_al_lane%u: 0x%x\n", i,
+							   GET_BIT_IN_MASK(reg_data->page_data.module_latched_flag_info.tx_bias_lo_al, i));
+			VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+			buffer += snp_res;
+			buffer_size += snp_res;
+		}
+		for (i = 0; i < MAX_LANE_INFO_PDDR_MODULE_SYSFS_GET; i++) {
+			snp_res = snprintf(buffer,
+							   buffer_length - buffer_size,
+							   "tx_bias_hi_war_lane%u: 0x%x\n", i,
+							   GET_BIT_IN_MASK(reg_data->page_data.module_latched_flag_info.tx_bias_hi_war, i));
+			VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+			buffer += snp_res;
+			buffer_size += snp_res;
+		}
+		for (i = 0; i < MAX_LANE_INFO_PDDR_MODULE_SYSFS_GET; i++) {
+			snp_res = snprintf(buffer,
+							   buffer_length - buffer_size,
+							   "tx_bias_lo_war_lane%u: 0x%x\n", i,
+							   GET_BIT_IN_MASK(reg_data->page_data.module_latched_flag_info.tx_bias_lo_war, i));
+			VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+			buffer += snp_res;
+			buffer_size += snp_res;
+		}
+		for (i = 0; i < MAX_LANE_INFO_PDDR_MODULE_SYSFS_GET; i++) {
+			snp_res = snprintf(buffer,
+							   buffer_length - buffer_size,
+							   "rx_los_lane%u: 0x%x\n", i,
+							   GET_BIT_IN_MASK(reg_data->page_data.module_latched_flag_info.rx_los, i));
+			VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+			buffer += snp_res;
+			buffer_size += snp_res;
+		}
+		for (i = 0; i < MAX_LANE_INFO_PDDR_MODULE_SYSFS_GET; i++) {
+			snp_res = snprintf(buffer,
+							   buffer_length - buffer_size,
+							   "rx_cdr_lol_lane%u: 0x%x\n", i,
+							   GET_BIT_IN_MASK(reg_data->page_data.module_latched_flag_info.rx_cdr_lol, i));
+			VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+			buffer += snp_res;
+			buffer_size += snp_res;
+		}
+		for (i = 0; i < MAX_LANE_INFO_PDDR_MODULE_SYSFS_GET; i++) {
+			snp_res = snprintf(buffer,
+							   buffer_length - buffer_size,
+							   "rx_power_hi_al_lane%u: 0x%x\n", i,
+							   GET_BIT_IN_MASK(reg_data->page_data.module_latched_flag_info.rx_power_hi_al, i));
+			VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+			buffer += snp_res;
+			buffer_size += snp_res;
+		}
+		for (i = 0; i < MAX_LANE_INFO_PDDR_MODULE_SYSFS_GET; i++) {
+			snp_res = snprintf(buffer,
+							   buffer_length - buffer_size,
+							   "rx_power_lo_al_lane%u: 0x%x\n", i,
+							   GET_BIT_IN_MASK(reg_data->page_data.module_latched_flag_info.rx_power_lo_al, i));
+			VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+			buffer += snp_res;
+			buffer_size += snp_res;
+		}
+		for (i = 0; i < MAX_LANE_INFO_PDDR_MODULE_SYSFS_GET; i++) {
+			snp_res = snprintf(buffer,
+							   buffer_length - buffer_size,
+							   "rx_power_hi_war_lane%u: 0x%x\n", i,
+							   GET_BIT_IN_MASK(reg_data->page_data.module_latched_flag_info.rx_power_hi_war, i));
+			VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+			buffer += snp_res;
+			buffer_size += snp_res;
+		}
+		for (i = 0; i < MAX_LANE_INFO_PDDR_MODULE_SYSFS_GET; i++) {
+			snp_res = snprintf(buffer,
+							   buffer_length - buffer_size,
+							   "rx_power_lo_war_lane%u: 0x%x\n", i,
+							   GET_BIT_IN_MASK(reg_data->page_data.module_latched_flag_info.rx_power_lo_war, i));
+			VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+			buffer += snp_res;
+			buffer_size += snp_res;
+		}
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser_fault_flag: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser_fault_flag);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser2_fault_flag: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser2_fault_flag);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser_warning_flag: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser_warning_flag);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser2_warning_flag: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser2_warning_flag);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser_source_flag_in_use_msb: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser_source_flag_in_use_msb);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+		for (i = 0; i < MAX_LANE_INFO_PDDR_MODULE_SYSFS_GET; i++) {
+			snp_res = snprintf(buffer,
+							   buffer_length - buffer_size,
+							   "rx_output_valid_change_lane%u: 0x%x\n", i,
+							   GET_BIT_IN_MASK(reg_data->page_data.module_latched_flag_info.rx_output_valid_change,
+											   i));
+			VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+			buffer += snp_res;
+			buffer_size += snp_res;
+		}
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "flag_in_use: 0x%x\n", reg_data->page_data.module_latched_flag_info.flag_in_use);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser_source_flag_in_use: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser_source_flag_in_use);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser_bias_hi_al: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser_bias_hi_al);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser2_bias_hi_al: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser2_bias_hi_al);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser_bias_lo_al: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser_bias_lo_al);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser2_bias_lo_al: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser2_bias_lo_al);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser_bias_hi_war: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser_bias_hi_war);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser2_bias_hi_war: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser2_bias_hi_war);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser_bias_lo_war: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser_bias_lo_war);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser2_bias_lo_war: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser2_bias_lo_war);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser_opt_pwr_hi_al: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser_opt_pwr_hi_al);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser2_opt_pwr_hi_al: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser2_opt_pwr_hi_al);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser_opt_pwr_lo_al: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser_opt_pwr_lo_al);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser2_opt_pwr_lo_al: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser2_opt_pwr_lo_al);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser_opt_pwr_hi_war: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser_opt_pwr_hi_war);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser2_opt_pwr_hi_war: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser2_opt_pwr_hi_war);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser_opt_pwr_lo_war: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser_opt_pwr_lo_war);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser2_opt_pwr_lo_war: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser2_opt_pwr_lo_war);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser_temp_hi_al: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser_temp_hi_al);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser2_temp_hi_al: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser2_temp_hi_al);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser_temp_lo_al: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser_temp_lo_al);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser2_temp_lo_al: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser2_temp_lo_al);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser_temp_hi_war: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser_temp_hi_war);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser2_temp_hi_war: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser2_temp_hi_war);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser_temp_lo_war: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser_temp_lo_war);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "laser2_temp_lo_war: 0x%x\n", reg_data->page_data.module_latched_flag_info.laser2_temp_lo_war);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "optical_engine_flag_in_use: 0x%x\n", reg_data->page_data.module_latched_flag_info.optical_engine_flag_in_use);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "els_input_power_hi_al: 0x%x\n", reg_data->page_data.module_latched_flag_info.els_input_power_hi_al);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "els_input_power_lo_al: 0x%x\n", reg_data->page_data.module_latched_flag_info.els_input_power_lo_al);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "els_input_power_hi_war: 0x%x\n", reg_data->page_data.module_latched_flag_info.els_input_power_hi_war);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "els_input_power_lo_war: 0x%x\n", reg_data->page_data.module_latched_flag_info.els_input_power_lo_war);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "lane_temp_hi_al: 0x%x\n", reg_data->page_data.module_latched_flag_info.lane_temp_hi_al);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "lane_temp_lo_al: 0x%x\n", reg_data->page_data.module_latched_flag_info.lane_temp_lo_al);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "lane_temp_hi_war: 0x%x\n", reg_data->page_data.module_latched_flag_info.lane_temp_hi_war);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "lane_temp_lo_war: 0x%x\n", reg_data->page_data.module_latched_flag_info.lane_temp_lo_war);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        break;
+
+    case SXD_PDDR_PAGE_SELECT_LINK_DOWN_INFO_EXT_E:
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cause_as_detected_not_on_slot: 0x%x\n", reg_data->page_data.pddr_link_down_info_ext_16nm_lr.cause_as_detected_not_on_slot);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cause_high_ser: 0x%x\n", reg_data->page_data.pddr_link_down_info_ext_16nm_lr.cause_high_ser);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cause_rs_rx_lane0_symbol_error: 0x%x\n", reg_data->page_data.pddr_link_down_info_ext_16nm_lr.cause_rs_rx_lane0_symbol_error);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cause_tx_lane_fifo_underrun_l0: 0x%x\n", reg_data->page_data.pddr_link_down_info_ext_16nm_lr.cause_tx_lane_fifo_underrun_l0);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cause_deskew_fifo_overrun: 0x%x\n", reg_data->page_data.pddr_link_down_info_ext_16nm_lr.cause_deskew_fifo_overrun);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "cause_fec_rx_sync_m_reached_max0: 0x%x\n", reg_data->page_data.pddr_link_down_info_ext_16nm_lr.cause_fec_rx_sync_m_reached_max0);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "symbol_error_counter_lo: 0x%x\n", reg_data->page_data.pddr_link_down_info_ext_16nm_lr.symbol_error_counter_lo);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "symbol_error_counter_hi: 0x%x\n", reg_data->page_data.pddr_link_down_info_ext_16nm_lr.symbol_error_counter_hi);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "uncorrectable_block_counter_lo: 0x%x\n", reg_data->page_data.pddr_link_down_info_ext_16nm_lr.uncorrectable_block_counter_lo);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "uncorrectable_block_counter_hi: 0x%x\n", reg_data->page_data.pddr_link_down_info_ext_16nm_lr.uncorrectable_block_counter_hi);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "link_fail_due_align_loss: 0x%x\n", reg_data->page_data.pddr_link_down_info_ext_16nm_lr.link_fail_due_align_loss);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "block_lock_mask_at_fail_port1: 0x%x\n", reg_data->page_data.pddr_link_down_info_ext_16nm_lr.block_lock_mask_at_fail_port1);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "block_lock_mask_at_fail_port0: 0x%x\n", reg_data->page_data.pddr_link_down_info_ext_16nm_lr.block_lock_mask_at_fail_port0);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "link_down_counter: 0x%x\n", reg_data->page_data.pddr_link_down_info_ext_16nm_lr.link_down_counter);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "effective_ber_coef: 0x%x\n", reg_data->page_data.pddr_link_down_info_ext_16nm_lr.effective_ber_coef);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "effective_ber_magnitude: 0x%x\n", reg_data->page_data.pddr_link_down_info_ext_16nm_lr.effective_ber_magnitude);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "raw_ber_coef: 0x%x\n", reg_data->page_data.pddr_link_down_info_ext_16nm_lr.raw_ber_coef);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "raw_ber_magnitude: 0x%x\n", reg_data->page_data.pddr_link_down_info_ext_16nm_lr.raw_ber_magnitude);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        break;
+
+    case SXD_PDDR_PAGE_SELECT_LINK_PARTNER_INFO_PAGE_E:
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "info_supported_mask: 0x%x\n", reg_data->page_data.pddr_link_partner_info.info_supported_mask);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "bubble_agreement: 0x%x\n", reg_data->page_data.pddr_link_partner_info.bubble_agreement);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "partner_local_port: 0x%x\n", reg_data->page_data.pddr_link_partner_info.partner_local_port);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "partner_module_type: 0x%x\n", reg_data->page_data.pddr_link_partner_info.partner_module_type);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "partner_id_lsb: 0x%x\n", reg_data->page_data.pddr_link_partner_info.partner_id_lsb);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        break;
+
+    case SXD_PDDR_PAGE_SELECT_PHY_ISR_TRACKING_INFO_PAGE_E:
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "isr_access_enums: 0x%x\n", reg_data->page_data.pddr_phy_isr_tracking_info_page.isr_access_enums);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "isr_track_mod: 0x%x\n", reg_data->page_data.pddr_phy_isr_tracking_info_page.isr_track_mod);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "isr_track_enum: 0x%x\n", reg_data->page_data.pddr_phy_isr_tracking_info_page.isr_track_enum);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "max_isr_enum: 0x%x\n", reg_data->page_data.pddr_phy_isr_tracking_info_page.max_isr_enum);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        for (i = 0; i < SXD_PDDR_PDDR_PHY_ISR_TRACKING_INFO_PAGE_MAX_TIME_ISR_NUM; i++) {
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "max_time_isr[%d]: 0x%x\n", i, reg_data->page_data.pddr_phy_isr_tracking_info_page.max_time_isr[i]);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+        }
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "\n");
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        break;
+
+    case SXD_PDDR_PAGE_SELECT_LINK_DOWN_INFO_BUFFER_E:
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "tracer_sel: 0x%x\n", reg_data->page_data.pddr_link_down_info_buffer_page.tracer_sel);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        for (i = 0; i < SXD_PDDR_PDDR_LINK_DOWN_INFO_BUFFER_PAGE_LINK_DOWN_TRACER_NUM; i++) {
+            for (j = 0; j < SXD_PDDR_PDDR_LINK_DOWN_INFO_BUFFER_PAGE_ARRAY512_AUTO_NUM; j++) {
+                snp_res = snprintf(buffer, buffer_length - buffer_size, "array512_auto[%d]: 0x%x\n", j, reg_data->page_data.pddr_link_down_info_buffer_page.link_down_tracer[i].array512_auto[j]);
+                VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+                buffer += snp_res;
+                buffer_size += snp_res;
+            }
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "\n");
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+        }
+        break;
+
+    case SXD_PDDR_PAGE_SELECT_MNG_DEBUG_PAGE_E:
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "fw_module_state: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.fw_module_state);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "fw_dp_state_lane7: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.fw_dp_state_lane7);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "fw_dp_state_lane6: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.fw_dp_state_lane6);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "fw_dp_state_lane5: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.fw_dp_state_lane5);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "fw_dp_state_lane4: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.fw_dp_state_lane4);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "fw_dp_state_lane3: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.fw_dp_state_lane3);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "fw_dp_state_lane2: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.fw_dp_state_lane2);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "fw_dp_state_lane1: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.fw_dp_state_lane1);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "fw_dp_state_lane0: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.fw_dp_state_lane0);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "dp_req_status_lane7: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.dp_req_status_lane7);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "dp_req_status_lane6: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.dp_req_status_lane6);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "dp_req_status_lane5: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.dp_req_status_lane5);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "dp_req_status_lane4: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.dp_req_status_lane4);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "dp_req_status_lane3: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.dp_req_status_lane3);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "dp_req_status_lane2: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.dp_req_status_lane2);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "dp_req_status_lane1: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.dp_req_status_lane1);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "dp_req_status_lane0: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.dp_req_status_lane0);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "dpsm_apply_state_lane7: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.dpsm_apply_state_lane7);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "dpsm_apply_state_lane6: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.dpsm_apply_state_lane6);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "dpsm_apply_state_lane5: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.dpsm_apply_state_lane5);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "dpsm_apply_state_lane4: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.dpsm_apply_state_lane4);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "dpsm_apply_state_lane3: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.dpsm_apply_state_lane3);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "dpsm_apply_state_lane2: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.dpsm_apply_state_lane2);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "dpsm_apply_state_lane1: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.dpsm_apply_state_lane1);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "dpsm_apply_state_lane0: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.dpsm_apply_state_lane0);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "timer_left_for_dp_active_transition: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.timer_left_for_dp_active_transition);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "timer_left_for_high_pwrt_transition: 0x%x\n", reg_data->page_data.pddr_mng_debug_page.timer_left_for_high_pwrt_transition);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        break;
+
+    case SXD_PDDR_PAGE_SELECT_PHY_DEBUG_PAGE_E:
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "pport: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.pport);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "trigger_active: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.trigger_active);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "trigger_cond_state_event_val: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.trigger_cond_state_event_val);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "trigger_cond_state_or_event: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.trigger_cond_state_or_event);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "trigger_cond_fsm: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.trigger_cond_fsm);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "pre_trigger_buff_mode: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.pre_trigger_buff_mode);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "tracer_mode: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.tracer_mode);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "reset_tracer: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.reset_tracer);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "tracer_enable: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.tracer_enable);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "fsm_mask: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.fsm_mask);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "trigger_ptr: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.trigger_ptr);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "buffer_size: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.buffer_size);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "ptr_log_data: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.ptr_log_data);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "ptr_next_write: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.ptr_next_write);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "buffer_base_address: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.buffer_base_address);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "pport_second: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.pport_second);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "second_port_valid: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.second_port_valid);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "trigger_cond_port: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.trigger_cond_port);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "revision: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.revision);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "page_size: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.page_size);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        snp_res = snprintf(buffer, buffer_length - buffer_size, "page_index: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.page_index);
+        VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+        buffer += snp_res;
+        buffer_size += snp_res;
+        for (i = 0; i < SXD_PDDR_PDDR_PHY_DEBUG_PAGE_TRACER_DATA_ENTRY_NUM; i++) {
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "port_selector: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.tracer_data_entry[i].port_selector);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "time_stamp_unit: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.tracer_data_entry[i].time_stamp_unit);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "time_stamp: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.tracer_data_entry[i].time_stamp);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "event_verifier_status: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.tracer_data_entry[i].event_verifier_status);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "state_or_event: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.tracer_data_entry[i].state_or_event);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "event_state: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.tracer_data_entry[i].event_state);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+            snp_res = snprintf(buffer, buffer_length - buffer_size, "phy_fsm: 0x%x\n", reg_data->page_data.pddr_phy_debug_page.tracer_data_entry[i].phy_fsm);
+            VALIDATE_ROLLBACK(snp_res, buffer_length, buffer_size);
+            buffer += snp_res;
+            buffer_size += snp_res;
+        }
+        break;
+
+    default:
+        /* Other types not supported yet */
+        break;
+    }
+
+    return buffer_size;
+}
+EXPORT_SYMBOL(sx_kernel_access_reg_pddr_data_to_buffer_print);
+
