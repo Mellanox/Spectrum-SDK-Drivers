@@ -286,7 +286,7 @@ else
         DEFINE_SX_CORE="#undef CONFIG_SX_CORE"
 fi
 if [ "X${CONFIG_SX_SDK_VERSION}" == "Xy" ]; then
-        DEFINE_SX_SDK_VERSION='#define SX_SDK_VERSION "3.0.0000"'
+        DEFINE_SX_SDK_VERSION='#define SX_SDK_VERSION "4.8.3404"'
 else
         DEFINE_SX_SDK_VERSION="#undef SX_SDK_VERSION"
 fi
