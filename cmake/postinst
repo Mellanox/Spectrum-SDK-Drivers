@@ -1,0 +1,21 @@
+#!/bin/bash
+#
+# Post-install script for the kernel-only sx_kernel package.
+# Runs depmod against the running kernel's modules directory.
+#
+# SDK_CMAKE_INSTALL is set when invoked via "cmake --install".
+# SDK_CMAKE_INSTALL is not set when invoked by dpkg/rpm during package install.
+
+rc=0
+
+if { [[ -z "$SDK_CMAKE_INSTALL" ]] || [[ -n "$SDK_CMAKE_INSTALL" && -n "$SDK_CMAKE_INSTALL_DEPMOD" ]]; }; then
+    modules_dir=/lib/modules/`uname -r`
+    if [ -d ${modules_dir} ]; then
+        depmod `uname -r` -a
+        rc=$?
+    else
+        echo "${modules_dir} does not exist - Assuming not target switch | Skipping depmod"
+    fi
+fi
+
+exit ${rc}
