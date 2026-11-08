@@ -1,0 +1,13 @@
+diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
+index 51b6c81671c1..4c5427493adb 100644
+--- a/drivers/pci/pci.c
++++ b/drivers/pci/pci.c
+@@ -4537,7 +4537,7 @@ void pci_reset_secondary_bus(struct pci_dev *dev)
+ 	 * be re-initialized.  PCIe has some ways to shorten this,
+ 	 * but we don't make use of them yet.
+ 	 */
+-	ssleep(1);
++	ssleep(2);
+ }
+ 
+ void __weak pcibios_reset_secondary_bus(struct pci_dev *dev)

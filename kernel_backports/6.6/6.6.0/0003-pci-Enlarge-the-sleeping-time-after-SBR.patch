@@ -1,0 +1,12 @@
+diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
+--- a/drivers/pci/pci.c
++++ b/drivers/pci/pci.c
+@@ -5178,6 +5178,8 @@ void pci_reset_secondary_bus(struct pci_dev *dev)
+ 
+ 	ctrl &= ~PCI_BRIDGE_CTL_BUS_RESET;
+ 	pci_write_config_word(dev, PCI_BRIDGE_CONTROL, ctrl);
++
++	ssleep(2);
+ }
+ 
+ void __weak pcibios_reset_secondary_bus(struct pci_dev *dev)
